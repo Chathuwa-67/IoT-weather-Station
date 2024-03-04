@@ -1,0 +1,100 @@
+<!DOCTYPE HTML><html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <style>
+    html {
+     font-family: Arial;
+     display: inline-block;
+     margin: 0px auto;
+     text-align: center;
+    }
+    body{
+      background: linear-gradient(to right,  #19d065cd, #450f9ce2);
+     
+    }
+    h2 { font-size: 3.0rem; }
+    p { font-size: 3.0rem; }
+    .units { font-size: 1.2rem; }
+    .dht-labels{
+      font-size: 1.5rem;
+      vertical-align:middle;
+      padding-bottom: 15px;
+    }
+  a{
+    text-decoration: none;
+    color: aliceblue;
+  }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+<body>
+  <h2>IoT live weather monitoring using ESP8266</h2>
+  <p>
+    <i class="fas fa-thermometer-half" style="color:#f508e9;"></i> 
+    <span class="dht-labels">Temperature</span> 
+    <span id="temperature">%TEMPERATURE%</span>
+    <sup class="units">°C</sup>
+  </p>
+  <p>
+    <i class="fas fa-tint" style="color:#41f2ff;"></i> 
+    <span class="dht-labels">Humidity</span>
+    <span id="humidity">%HUMIDITY%</span>
+    <sup class="units">%</sup>
+  </p>
+  <p>
+      <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-65e091b0-d33c-4191-81f3-be77c921660a"></div>
+    </P>
+  <p>
+    
+    
+    <span style="font-size:1.0rem;">Read full article in github </span>
+    <a href="https://github.com/Chathuwa-67/IoT-weather-Station" target="_blank" style="font-size:1.0rem;">Gihan Chathuranga Gunathilaka</a>
+  </P>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("temperature").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/temperature", true);
+  xhttp.send();
+}, 10000 ) ;
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("humidity").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/humidity", true);
+  xhttp.send();
+}, 10000 ) ;
+</script>
+</html>
